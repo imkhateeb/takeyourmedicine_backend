@@ -4,11 +4,11 @@ const { Schema } = mongoose;
 const patientSchema = new Schema({
         name: String,
         userId: String,
-        courseCount: {
-                type: String,
-                default: '0',
-        },
-        medicineIntakes: [{
+        courseRunning: [{
+                type: Schema.Types.ObjectId,
+                ref: 'MedicineIntakeSchedules'
+        }],
+        courseCompleted: [{
                 type: Schema.Types.ObjectId,
                 ref: 'MedicineIntakeSchedules'
         }]

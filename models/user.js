@@ -25,7 +25,21 @@ const userSchema = new Schema({
    dateCreated: {
       type: Date,
       default: Date.now,
-   }
+   },
+   deleted: {
+      type: Boolean,
+      default: false,
+   },
+   chats: [{
+      title: {
+         type: 'String',
+         required: true,
+      },
+      id: {
+         type: Schema.Types.ObjectId,
+         ref: 'AIchat',
+      }
+   }]
 });
 
 module.exports = mongoose.model("User", userSchema);

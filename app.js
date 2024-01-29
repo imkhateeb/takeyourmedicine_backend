@@ -25,36 +25,17 @@ app.use((err, req, res, next) => {
 });
 
 
-// Routes
-const CreateUserRouter = require('./Routers/auth/CreateUser');
-app.use("/api", CreateUserRouter);
+// New Routes
+const userRoutes = require('./routes/user_routes');
+const medicineRoutes = require('./routes/medicine_routes');
+const schedulingRoutes = require('./routes/scheduling_routes');
+const requestRoutes = require('./routes/request_routes');
 
-const AuthUser = require('./Routers/auth/AuthUser');
-app.use("/api", AuthUser);
+app.use('/api/user', userRoutes);
+app.use('/api/medicine', medicineRoutes);
+app.use('/api/schedule', schedulingRoutes);
+app.use('/api/request', requestRoutes);
 
-const CreateSchedule = require('./Routers/medicineschedule/CreateSchedule');
-app.use("/api", CreateSchedule);
-
-const GetUser = require('./Routers/GetUser');
-app.use("/api", GetUser);
-
-const RequestList = require('./Routers/medicineschedule/RequestList');
-app.use("/api", RequestList);
-
-const AcceptRequest = require('./Routers/medicineschedule/AcceptRequest');
-app.use("/api", AcceptRequest);
-
-const GetMyPatient = require('./Routers/medicineschedule/GetMyPatient');
-app.use("/api", GetMyPatient);
-
-const MyScheduleList = require('./Routers/medicineschedule/MyScheduleList');
-app.use("/api", MyScheduleList);
-
-const GetAllCaretaker = require('./Routers/getAllCaretaker');
-app.use("/api", GetAllCaretaker);
-
-const CompleteCourse = require('./Routers/medicineschedule/CompleteCourse');
-app.use("/api", CompleteCourse);
 
 app.listen(process.env.PORT, () => {
    console.log("Backend is listening in PORT 5000");
